@@ -1,0 +1,15 @@
+data.*
+lcurve*ref
+tab.xvg
+
+# for training dirs
+*.out
+*.pb
+out.json
+model.ckpt*
+checkpoint
+model
+
+# for lammps
+log.cite
+log.lammps
