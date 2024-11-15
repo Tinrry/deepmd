@@ -38,13 +38,20 @@ def gen_supercel(cell):
         write(supercell_name, sc, vasp5=True, sort=True, direct=False)
     return supercell_name
     
+import argparse
+parser = argparse.ArgumentParser()
+parser.add_argument("ix", type=int, help="supercell size in x direction")
+parser.add_argument("iy", type=int, help="supercell size in y direction")
+parser.add_argument("iz", type=int, help="supercell size in z direction")
+args = parser.parse_args()
 
 # @profile(precision=2,stream=open('memory_profiler.log','w+'))
 def main():
     with open('output.txt', 'a') as f:    #  todo wirte to <jobid>_energy.txt          
         f.write(f"ix\tiy\tiz\tn_supercell\tn_atoms\t\tenergy\t\ttime\tmemory(MB)\n")
 
-        ix, iy, iz = 2, 2, 2
+        # read from the command line
+        ix, iy, iz = args.ix, args.iy, args.iz
         supercell_name = gen_supercel(cell=[ix, iy, iz])
 
         sc = read(supercell_name, format='vasp')
