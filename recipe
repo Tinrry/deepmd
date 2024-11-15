@@ -1,0 +1,5 @@
+echo "please enter the jobid"
+read jobid
+echo "job $jobid"
+sacct -j $jobid
+sstat -j $jobid --format=JobID,NodeList,MaxRSS,MaxVMSize

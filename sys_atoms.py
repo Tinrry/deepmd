@@ -44,8 +44,8 @@ def predict_atoms_in_supercell(model_file: "Path", atoms: "ase.Atoms"):
 
 import os
 
-START_SUPER_CELL = 4
-SUPER_CELL = 5
+START_SUPER_CELL = 1
+SUPER_CELL = 2
 
 if __name__ == "__main__":
     atoms = read('POSCAR_MgAlCu', format='vasp')         # read the atoms from the POSCAR file, 464 atoms, mp-1200279

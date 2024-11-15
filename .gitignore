@@ -1,4 +1,6 @@
 dataset_all
+geometry
 *.log
-
-
+[0-9]*.err
+[0-9]*.out
+slurm*
