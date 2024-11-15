@@ -29,7 +29,7 @@ echo "Job start time: $(date)"
 # get the input from the command line
 
 # todo  srun mpirun -np 1 python run.py   this is not working       
-srun python run.py $1 $2 $3 %J_energy.txt
+srun python run.py $1 $2 $3 %J_predict.txt
 
 # get the current time
 echo "Job end time: $(date)"
