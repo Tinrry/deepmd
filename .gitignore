@@ -4,3 +4,5 @@ geometry
 [0-9]*.err
 [0-9]*.out
 slurm*
+01_tc6001
+01.train
