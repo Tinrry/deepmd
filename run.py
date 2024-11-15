@@ -49,7 +49,7 @@ args = parser.parse_args()
 def main():
     output_file = args.output
     print(f"energy output file: {output_file}")
-    with open(output_file, 'a') as f:    #  todo wirte to <jobid>_energy.txt          
+    with open(output_file, 'a') as f:          
         f.write(f"ix\tiy\tiz\tn_supercell\tn_atoms\t\tenergy\t\ttime\tmemory(MB)\n")
 
         # read from the command line
@@ -59,13 +59,11 @@ def main():
         sc = read(supercell_name, format='vasp')
         sc.calc = DP(model)
         start_time = datetime.now()
-        # 计算能量
-        print("开始计算能量值。")
+        
         en = sc.get_potential_energy()
-        # 记录结束时间
+        
         end_time = datetime.now()
         elapsed_time = end_time - start_time
-        # 保存
         
         f.write(f"{ix}\t{iy}\t{iz}\t{ix*iy*iz}\t\t{len(sc)}\t\t{en:.3f}\t{elapsed_time.total_seconds():.1f}\t{get_memory_usage():.1f}\n")
     
