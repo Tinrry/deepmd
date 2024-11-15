@@ -1,24 +1,24 @@
 #!/bin/bash
 #SBATCH --job-name=deepmd_zhh
 #SBATCH --nodes=1 
-#SBATCH --ntasks=1
+#SBATCH --ntasks=56   # the node in CPUTot=56
 #SBATCH --time=1-02:00:00
 #SBATCH --output=%J.out
 #SBATCH --error=%J.err
 #SBATCH --mem=0
 #SBATCH --partition=operation
+#SBATCH --account=material_1
 
-# 设置环境变量以优化并行性 
-# export OMP_NUM_THREADS=4 
-# export TF_INTRA_OP_PARALLELISM_THREADS=4 
-# export TF_INTER_OP_PARALLELISM_THREADS=4
 
 # 初始化 conda 并激活 conda 环境 
 source ~/.bashrc
 conda activate deepmd2.2.11-cpu
 
-# 基础集群计算限制
+# 堆栈大小设置为无限制
 ulimit -s unlimited
+
+# get the current time
+echo "Job start time: $(date)"
 
 # ------- train -------
 # srun --partition=operation dp train input.json
@@ -26,5 +26,10 @@ ulimit -s unlimited
 # srun --partition=operation dp compress      # frozen_model_compressed.pb
 # ------- train end -------
 
+# get the input from the command line
+
 # todo  srun mpirun -np 1 python run.py   this is not working       
-srun python run.py
+srun python run.py $1 $2 $3 %J_energy.txt
+
+# get the current time
+echo "Job end time: $(date)"
