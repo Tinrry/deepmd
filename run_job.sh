@@ -18,6 +18,7 @@ ulimit -s unlimited
 
 # get the current time
 echo "Job start time: $(date)"
+start=$(date +%s)
 
 # ------- train -------
 # srun --partition=operation dp train input.json
@@ -32,3 +33,7 @@ srun python run.py $1 $2 $3 ${SLURM_JOB_ID}_predict.txt
 
 # get the current time
 echo "Job end time: $(date)"
+end=$(date +%s)
+
+duration=end-start
+echo "Job duration: $duration seconds" >> ${SLURM_JOB_ID}_predict.txt

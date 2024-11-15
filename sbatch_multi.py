@@ -32,9 +32,19 @@ cell_list = [
 
 
 # ===== submit jobs =====
-
+processes = []
 # each cell generates a job
 for i, cell in enumerate(cell_list):
-    subprocess.run(["sbatch", "run_job.sh", str(cell[0]), str(cell[1]), str(cell[2])])
+    # this is synchronous call
+    # subprocess.run(["sbatch", "run_job.sh", str(cell[0]), str(cell[1]), str(cell[2])])
+    # this is asynchronous call
+    process = subprocess.Popen(["sbatch", "run_job.sh", str(cell[0]), str(cell[1]), str(cell[2])])
+    processes.append(process)
     print(f"{i}-th Job submitted")
+    print("")
+
+# wait for all jobs to finish
+for process in processes:
+    process.wait()
+    print("Job finished")
     print("")
