@@ -1,12 +1,13 @@
 #!/bin/bash
 #SBATCH --job-name=deepmd_zhh
 #SBATCH --nodes=1 
-#SBATCH --ntasks=1   # the node in CPUTot=56, error: this will cause pending
+#SBATCH --ntasks=1
 #SBATCH --time=1-02:00:00
 #SBATCH --output=%J.out
 #SBATCH --error=%J.err
 #SBATCH --mem=0
-#SBATCH --partition=operation
+#SBATCH --partition=normal
+#SBATCH --exclusive
 
 # 初始化 conda 并激活 conda 环境 
 source ~/.bashrc
