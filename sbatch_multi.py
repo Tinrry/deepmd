@@ -4,8 +4,8 @@ import subprocess
 # ===== gloabl parameters configuration =====
 
 cell_list = [
-    [1,1,1],
-    [2,1,1],
+    # [1,1,1],
+    # [2,1,1],
     # [3,1,1],
     # [2,2,2],
     # [3,2,2],
@@ -25,6 +25,9 @@ cell_list = [
     # [10,10,40],
     # [10,10,63],
     # [10,10,90],
+    # [20, 20, 20],
+    [30, 30, 30],   # 43w
+    [40, 40, 40],   # 102.4w
     # [10,10,130],
     # [10,10,150],
     # [100,100,100],
@@ -41,10 +44,4 @@ for i, cell in enumerate(cell_list):
     process = subprocess.Popen(["sbatch", "run_job.sh", str(cell[0]), str(cell[1]), str(cell[2])])
     processes.append(process)
     print(f"{i}-th Job submitted")
-    print("")
-
-# wait for all jobs to finish
-for process in processes:
-    process.wait()
-    print("Job finished")
     print("")
