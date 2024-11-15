@@ -25,10 +25,10 @@ def get_memory_usage():
     mem = process.memory_info().rss / 1024 / 1024   # in MB
     return mem
 
-def gen_supercel(cell):
+def gen_supercell(cell):
     system = read('geometry/POSCAR')
-    ix, iy, iz = zip(cell)
-    print(f"create supercel", [ix,iy,iz])
+    ix, iy, iz = cell
+    print(f"create supercell", [ix,iy,iz])
 
     supercell_name = f'geometry/POSCAR_alloy_{ix}x{iy}x{iz}.vasp'
     if not os.path.exists(supercell_name):
@@ -54,14 +54,14 @@ def main():
 
         # read from the command line
         ix, iy, iz = args.ix, args.iy, args.iz
-        supercell_name = gen_supercel(cell=[ix, iy, iz])
+        supercell_name = gen_supercell(cell=[ix, iy, iz])
 
         sc = read(supercell_name, format='vasp')
         sc.calc = DP(model)
         start_time = datetime.now()
         
         en = sc.get_potential_energy()
-        
+
         end_time = datetime.now()
         elapsed_time = end_time - start_time
         
