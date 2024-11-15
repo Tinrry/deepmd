@@ -31,3 +31,4 @@ ix	iy	iz	n_supercell	n_atoms		energy		time	memory(MB)
 10	10	90	9000		144000		-302915.042	106.2	15514.3
 ix	iy	iz	n_supercell	n_atoms		energy		time	memory(MB)
 10	10	130	13000		208000		-437543.950	193.2	20618.6
+30      30      30      27000           432000          -908745.126             532.5   47228.5
