@@ -65,7 +65,7 @@ def main():
         end_time = datetime.now()
         elapsed_time = end_time - start_time
         
-        f.write(f"{ix}\t{iy}\t{iz}\t{ix*iy*iz}\t\t{len(sc)}\t\t{en:.3f}\t{elapsed_time.total_seconds():.1f}\t{get_memory_usage():.1f}\n")
+        f.write(f"{ix}\t{iy}\t{iz}\t{ix*iy*iz}\t\t{len(sc)}\t\t{en:.3f}\t\t{elapsed_time.total_seconds():.1f}\t{get_memory_usage():.1f}\n")
     
 if __name__=='__main__':
     main()
