@@ -43,11 +43,13 @@ parser = argparse.ArgumentParser()
 parser.add_argument("ix", type=int, help="supercell size in x direction")
 parser.add_argument("iy", type=int, help="supercell size in y direction")
 parser.add_argument("iz", type=int, help="supercell size in z direction")
+parser.add_argument("output", type=str, help="energy output file, as <jobid>_energy.txt")
 args = parser.parse_args()
 
-# @profile(precision=2,stream=open('memory_profiler.log','w+'))
 def main():
-    with open('output.txt', 'a') as f:    #  todo wirte to <jobid>_energy.txt          
+    output_file = args.output
+    print(f"energy output file: {output_file}")
+    with open(output_file, 'a') as f:    #  todo wirte to <jobid>_energy.txt          
         f.write(f"ix\tiy\tiz\tn_supercell\tn_atoms\t\tenergy\t\ttime\tmemory(MB)\n")
 
         # read from the command line
