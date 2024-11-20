@@ -1,5 +1,4 @@
 {
-    "_comment": "that's all",
     "model": {
         "type_map": [
             "Mg",
@@ -23,7 +22,12 @@
             "resnet_dt": false,
             "axis_neuron": 12,
             "seed": 1,
-            "_comment": " that's all"
+            "activation_function": "tanh",
+            "type_one_side": false,
+            "precision": "default",
+            "trainable": true,
+            "exclude_types": [],
+            "set_davg_zero": false
         },
         "fitting_net": {
             "neuron": [
@@ -33,16 +37,39 @@
             ],
             "resnet_dt": true,
             "seed": 1,
-            "_comment": " that's all"
+            "type": "ener",
+            "numb_fparam": 0,
+            "numb_aparam": 0,
+            "activation_function": "tanh",
+            "precision": "default",
+            "trainable": true,
+            "rcond": null,
+            "atom_ener": [],
+            "use_aparam_as_mask": false
         },
-        "_comment": " that's all"
+        "data_stat_nbatch": 10,
+        "data_stat_protect": 0.01,
+        "data_bias_nsample": 10,
+        "srtab_add_bias": true,
+        "type": "standard",
+        "compress": {
+            "model_file": "frozen_model.pb",
+            "min_nbor_dist": 1.575037819348204,
+            "table_config": [
+                5,
+                0.01,
+                0.1,
+                -1
+            ],
+            "type": "se_e2_a"
+        }
     },
     "learning_rate": {
         "type": "exp",
         "decay_steps": 80000,
         "start_lr": 2e-05,
         "stop_lr": 5e-08,
-        "_comment": "that's all"
+        "scale_by_worker": "linear"
     },
     "loss": {
         "type": "ener",
@@ -52,7 +79,14 @@
         "limit_pref_f": 1,
         "start_pref_v": 0.02,
         "limit_pref_v": 0.2,
-        "_comment": " that's all"
+        "start_pref_ae": 0.0,
+        "limit_pref_ae": 0.0,
+        "start_pref_pf": 0.0,
+        "limit_pref_pf": 0.0,
+        "enable_atom_ener_coeff": false,
+        "start_pref_gf": 0.0,
+        "limit_pref_gf": 0.0,
+        "numb_generalized_coord": 0
     },
     "training": {
         "training_data": {
@@ -7513,7 +7547,9 @@
                 "../dataset_all/sys.9997"
             ],
             "batch_size": "auto",
-            "_comment": "that's all"
+            "set_prefix": "set",
+            "auto_prob": "prob_sys_size",
+            "sys_probs": null
         },
         "validation_data": {
             "systems": [
@@ -7521,13 +7557,24 @@
             ],
             "batch_size": "auto",
             "numb_btch": 1,
-            "_comment": "that's all"
+            "set_prefix": "set",
+            "auto_prob": "prob_sys_size",
+            "sys_probs": null
         },
         "numb_steps": 500000,
         "seed": 10,
         "disp_file": "lcurve.out",
         "disp_freq": 1000,
         "save_freq": 2000,
-        "_comment": "that's all"
+        "save_ckpt": "model-compression/model.ckpt",
+        "max_ckpt_keep": 5,
+        "disp_training": true,
+        "time_training": true,
+        "profiling": false,
+        "profiling_file": "timeline.json",
+        "enable_profiler": false,
+        "tensorboard": false,
+        "tensorboard_log_dir": "log",
+        "tensorboard_freq": 1
     }
 }
