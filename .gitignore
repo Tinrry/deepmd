@@ -1,0 +1,8 @@
+dataset_all
+*.log
+01train/model-compression
+API-KEY
+POSCAR.*
+01train/finetune_3E6/
+geometry
+01train/finetune_3E6/finetune_3E6.zip 
